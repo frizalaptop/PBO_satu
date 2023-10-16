@@ -526,7 +526,7 @@ class LingkaranFrame(Frame):
 
     def result_luas(self):
             self.txtLuas.delete(0, END)
-            r = float(self.txtJarijari1.get())
+            r = float(self.txtJarijari2.get())
             luas = 3.14*r*r
             self.txtLuas.insert(0, f"Luas = {luas}")                
 
