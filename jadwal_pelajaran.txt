@@ -1,0 +1,10 @@
+Senin:
+PBO
+AGAMA
+
+Selasa:
+OLAHRAGA
+KWI
+
+Rabu:
+ALGORITMA
