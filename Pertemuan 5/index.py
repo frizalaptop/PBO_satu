@@ -3,7 +3,7 @@ from tkinter import filedialog
 
 def create_files():
     input_data = entry.get("1.0", tk.END)
-    input_file_path = 'jadwal_pelajaran.txt'
+    input_file_path = 'Pertemuan 5/jadwal_pelajaran.txt'
     with open(input_file_path, 'w') as input_file:
         input_file.write(input_data)
         input_file.close()
