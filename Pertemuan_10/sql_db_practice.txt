@@ -1,0 +1,104 @@
+
+Lenovo@JODI c:\xampp
+# mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 425
+Server version: 10.4.28-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> use obat_obatan;
+Database changed
+MariaDB [obat_obatan]> describe obat;
++--------+--------------+------+-----+---------+----------------+
+| Field  | Type         | Null | Key | Default | Extra          |
++--------+--------------+------+-----+---------+----------------+
+| id     | int(11)      | NO   | PRI | NULL    | auto_increment |
+| kdobat | varchar(10)  | YES  | UNI | NULL    |                |
+| nama   | varchar(100) | YES  |     | NULL    |                |
+| berat  | varchar(10)  | YES  |     | NULL    |                |
+| bentuk | varchar(50)  | YES  |     | NULL    |                |
++--------+--------------+------+-----+---------+----------------+
+5 rows in set (0.034 sec)
+
+MariaDB [obat_obatan]> select * from obat;
++----+--------+------+-------+--------+
+| id | kdobat | nama | berat | bentuk |
++----+--------+------+-------+--------+
+|  1 | ghtw   | magg | 10mg  | kapsul |
++----+--------+------+-------+--------+
+1 row in set (0.001 sec)
+
+MariaDB [obat_obatan]> insert into obat(kdobat, nama, berat, bentuk) values('ghtw', 'demam', '14mg','tablet');
+ERROR 1062 (23000): Duplicate entry 'ghtw' for key 'kdobat'
+MariaDB [obat_obatan]> insert into obat(kdobat, nama, berat, bentuk) values('traz', 'demam', '14mg','tablet');
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [obat_obatan]> insert into obat(kdobat, nama, berat, bentuk) values('traz', 'batuk', '8mg','kapsul');
+ERROR 1062 (23000): Duplicate entry 'traz' for key 'kdobat'
+MariaDB [obat_obatan]> insert into obat(kdobat, nama, berat, bentuk) values('judt', 'batuk', '8mg','kapsul');
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [obat_obatan]> insert into obat(kdobat, nama, berat, bentuk) values('eqet', 'pilek', '10mg','sirup');
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [obat_obatan]> select * from obat;
++----+--------+-------+-------+--------+
+| id | kdobat | nama  | berat | bentuk |
++----+--------+-------+-------+--------+
+|  1 | ghtw   | magg  | 10mg  | kapsul |
+|  3 | traz   | demam | 14mg  | tablet |
+|  5 | judt   | batuk | 8mg   | kapsul |
+|  6 | eqet   | pilek | 10mg  | sirup  |
++----+--------+-------+-------+--------+
+4 rows in set (0.001 sec)
+
+MariaDB [obat_obatan]> insert into obat(kdobat, nama, berat, bentuk) values('epuh', 'pusing', '13mg','sirup');
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [obat_obatan]> select * from obat;
++----+--------+--------+-------+--------+
+| id | kdobat | nama   | berat | bentuk |
++----+--------+--------+-------+--------+
+|  1 | ghtw   | magg   | 10mg  | kapsul |
+|  3 | traz   | demam  | 14mg  | tablet |
+|  5 | judt   | batuk  | 8mg   | kapsul |
+|  6 | eqet   | pilek  | 10mg  | sirup  |
+|  7 | epuh   | pusing | 13mg  | sirup  |
++----+--------+--------+-------+--------+
+5 rows in set (0.001 sec)
+
+MariaDB [obat_obatan]> update obat set nama="liver" where id=1;
+Query OK, 1 row affected (0.004 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [obat_obatan]> select * from obat;
++----+--------+--------+-------+--------+
+| id | kdobat | nama   | berat | bentuk |
++----+--------+--------+-------+--------+
+|  1 | ghtw   | liver  | 10mg  | kapsul |
+|  3 | traz   | demam  | 14mg  | tablet |
+|  5 | judt   | batuk  | 8mg   | kapsul |
+|  6 | eqet   | pilek  | 10mg  | sirup  |
+|  7 | epuh   | pusing | 13mg  | sirup  |
++----+--------+--------+-------+--------+
+5 rows in set (0.001 sec)
+
+MariaDB [obat_obatan]> delete from obat where id=7;
+Query OK, 1 row affected (0.024 sec)
+
+MariaDB [obat_obatan]> select * from obat;
++----+--------+-------+-------+--------+
+| id | kdobat | nama  | berat | bentuk |
++----+--------+-------+-------+--------+
+|  1 | ghtw   | liver | 10mg  | kapsul |
+|  3 | traz   | demam | 14mg  | tablet |
+|  5 | judt   | batuk | 8mg   | kapsul |
+|  6 | eqet   | pilek | 10mg  | sirup  |
++----+--------+-------+-------+--------+
+4 rows in set (0.001 sec)
+
+MariaDB [obat_obatan]>
